@@ -391,10 +391,6 @@
 
     function discountd(d,s)
     {
-        if(d=="-")
-        {
-            return -1;
-        }
         var y,sb;
         y = d.substring(d.length-1, d.length);
         // console.log(y);
@@ -426,8 +422,6 @@
         //st = st.toFixed(2);
         // console.log(st);
         var dis = discountd(diss[i],st);
-        if(dis!=-1)
-        {
         dis_sum=dis_sum+parseFloat(dis);
         // console.log(dis);
         //console.log(gt[0]);
@@ -458,24 +452,24 @@
         }
         else
         {
-            var hu=gst[i].substring(0, gst[i].length);
-            hu = parseFloat(gst[i]);
-            var w=cess[i].substring(0, cess[i].length);
-            w=parseFloat(cess[i]);
-            var taxable = incl(st-dis,hu,w);
+            gst[i]=gst[i].substring(0, gst[i].length);
+            gst[i] = parseFloat(gst[i]);
+            cess[i]=cess[i].substring(0, cess[i].length);
+            var w = parseFloat(cess[i]);
+            var taxable = incl(st-dis,gst[i],w);
             //taxable = parseFloat(taxable);
             
-            //gst[i]=parseFloat(gst[i]);
-            //cess[i]=parseFloat(cess[i]);
-            var gsta = taxable*hu/(hu+w);
+            gst[i]=parseFloat(gst[i]);
+            cess[i]=parseFloat(cess[i]);
+            var gsta = taxable*gst[i]/(gst[i]+cess[i]);
             cgst_sum=cgst_sum+parseFloat(gsta);
-            var cesa = taxable*w/(hu+w);
+            var cesa = taxable*cess[i]/(gst[i]+cess[i]);
             cess_sum=cess_sum+parseFloat(cesa);
             //console.log(taxable);
             var taxable=(st-dis)-taxable;
             //console.log(gsta);
             //console.log(cesa);
-            //console.log(taxable);
+            console.log(taxable);
             tax_sum=tax_sum+taxable;
             //var gsta = gsti(st-dis,gst[i],cess[i]);
 
@@ -516,93 +510,6 @@
                 tble.innerHTML+=temp;
         
     }
-    else
-    {
-        if(gt[i]=="Excl.")
-        {
-            var taxable = st;
-            //taxable = taxable.toFixed(2);
-            tax_sum=tax_sum+taxable;
-            // console.log(taxable);
-            var gsta = taxable*parseFloat(gst[i])/100;
-            //gsta = gsta.toFixed(2);
-            
-            // console.log(gsta);
-
-            var cesa = taxable*parseFloat(cess[i])/100;
-            //cesa = cesa.toFixed(2);
-            cess_sum=cess_sum+parseFloat(cesa);
-            // console.log(cesa);
-            var sg = gsta/2;
-            cgst_sum=cgst_sum+parseFloat(sg);
-            // console.log(sg);
-            var total = parseFloat(gsta)+parseFloat(cesa)+parseFloat(taxable);
-            total = parseFloat(total);
-            total_sum = total_sum+parseFloat(total);
-            // console.log(total);
-
-
-        }
-        else
-        {
-            var hu=gst[i].substring(0, gst[i].length);
-            hu = parseFloat(gst[i]);
-            var w=cess[i].substring(0, cess[i].length);
-            w=parseFloat(cess[i]);
-            var taxable = incl(st,hu,w);
-            //taxable = parseFloat(taxable);
-            
-            //gst[i]=parseFloat(gst[i]);
-            //cess[i]=parseFloat(cess[i]);
-            var gsta = taxable*hu/(hu+w);
-            cgst_sum=cgst_sum+parseFloat(gsta);
-            var cesa = taxable*w/(hu+w);
-            cess_sum=cess_sum+parseFloat(cesa);
-            //console.log(taxable);
-            var taxable=(st)-taxable;
-            //console.log(gsta);
-            //console.log(cesa);
-            //console.log(taxable);
-            tax_sum=tax_sum+taxable;
-            //var gsta = gsti(st-dis,gst[i],cess[i]);
-
-            //gsta = parseFloat(gsta);
-            //cgst_sum=cgst_sum+gsta;
-            // console.log(gsta);
-            // var cesa = gsta*w/100;
-            // cesa = cesa;
-            // cess_sum=cess_sum+parseFloat(cesa);
-            // var sg = gsta/2;
-            // sg = parseFloat(sg);
-            // cgst_sum=cgst_sum+parseFloat(sg);
-            // // console.log(sg);
-            var total = st;
-            total=parseFloat(total);
-            total_sum = total_sum+parseFloat(total);
-
-
-
-        }
-        raat[i]=raat[i].slice(1);
-        
-        var temp = `<tr>
-                    <td style="width:2%;text-align: center;">${i+1}</td>
-                    <td style="width:21%;text-align: start;">
-                        <h6>${itm[i]}</h6><p>${ds[i]}</p>
-                    </td><td style="width:6%;text-align: center;">${hsn[i]}</td>
-                    <td style="text-align: center;width:8%;">${parseFloat(raat[i]).toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>                    
-                    <td style="width:8%;text-align: center;">${qunt[i]}</td>
-                    <td style="text-align: center;width:10%;">${st.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
-                    <td style="text-align: center;width:6%;">-</td>
-                    <td style="text-align: center;width:8%;">${taxable.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
-                    <td style="text-align: center;width:5%;">${parseInt(gst[i])}% <br> <span style="font-weight: 100;">${gt[i]}</span></td>
-                    <td style="text-align: center;width:5%;">${parseFloat(gsta).toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})} <br><span style="font-weight: 100;">${parseInt(gst[i])}%</span></td>
-                    <td style="text-align: center;width:5%;">${cesa.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})}<br><span style="font-weight: 100;">${cess[i]}%</span></td>
-                    <td style="text-align: center;width:10%;">${total.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
-                </tr> `;
-                tble.innerHTML+=temp;
-    }
-}
     console.log(st_sum.toLocaleString("en-IN"));
     let temple = `<tr>
                     <td colspan="5" style="text-align: center;width:41%;"><b>TOTAL</b></td>

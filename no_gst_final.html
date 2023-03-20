@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pg2</title>
+    <title>Invoice</title>
     <link rel="stylesheet" href="bootstrap.css">
     <style>
         p
@@ -63,6 +63,11 @@
             {
                 display: none;
             }
+            #nodisp
+            {
+                display:none;
+            }
+            
         }
         
     </style>
@@ -178,7 +183,7 @@
                
                <p><b>Paid Through : </b><span id="pt">-</span></p>
                <p><b>Payment Instructions</b><br>
-                Paytm/GPay/PPay/BharatPay/AmazonPay</p>
+                Paytm/GPay/PPay/BharatPay/AmazonPay/Cash</p>
                 <p style="margin-bottom: 20px;"><b>PAYPAL : </b>
                     sujayhegdehh@gmail.com</p>
                 </div>
@@ -258,6 +263,7 @@
                 without prior notice. <br>
             </p> 
             <center style="margin-top: 20px;margin-bottom: 20px;"><button onclick="window.print()" style="background-color: green;color:azure;cursor: pointer;width: 13%;border:2px solid black;border-radius: 2px;" id="nodis"><b>Print Again</b></button></center>
+            <center style="margin-top: 20px;margin-bottom: 20px;"><button onclick="window.location='index.html'" style="background-color: green;color:azure;cursor: pointer;width: 13%;border:2px solid black;border-radius: 2px;" id="nodisp"><b>Generate New Bill</b></button></center>
             </div>
         </div>
     </div>
@@ -297,8 +303,8 @@
         var evfdate = localStorage.getItem("evfdate");
         var evtdate = localStorage.getItem("evtdate");
         document.getElementById("eb").innerText=eb;
-        document.getElementById("evf").innerText=evfdate+evfd;
-        document.getElementById("evt").innerText=evtdate+evtd;
+        document.getElementById("evf").innerText=evfdate+"  "+evfd;
+        document.getElementById("evt").innerText=evtdate+"  "+evtd;
         document.getElementById("el").innerText=loc;
         document.getElementById("evn").innerText=evn;
         document.getElementById("eway").style.display="initial";
