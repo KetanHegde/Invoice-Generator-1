@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice generator</title>
+    <link rel="stylesheet" href="bootstrap.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1 col-md-12 col-sm-12 col-xs-12" style="margin-top:150px;margin-bottom:150px;">
+                <center>
+                <p style="font-size:50px ;font-weight:700;color: black;background-color: aliceblue;">Do you want to bifurcate state and Interstate?</p><br>
+                </center>
+                <button style="font-size:50px ;font-weight:700;width:40%;cursor: pointer
+                ;background-color: rgb(66, 13, 81);color: aliceblue;border:2px solid white;border-radius: 5px;" onclick="yes(1)">YES</button>
+                <button style="float: right;font-size:50px ;font-weight:700;width:40%;cursor:pointer;background-color: rgb(66, 13, 81);color: aliceblue;border:2px solid white;border-radius: 5px;" onclick="yes(2)">NO</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    function yes(a)
+    {
+        if(a==1)
+        {
+            window.location="gst_page3y.html";
+        }
+        else
+        {
+            window.location="gst_page3n.html";
+        }
+    }
+</script>

@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Generator</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <style>
+        .eway,.add,#b1,#h5
+        {
+            display: none;
+        }
+        #table{
+            visibility: hidden;
+        }
+        #b2{
+            visibility: hidden;
+        }
+        #GST,#discount{
+            display: none;
+        }
+        /* #adddd{
+            display: none;
+        } */
+        #add,#adu{
+            display:none;
+        }
+        #nextbtn{
+            display:none;
+        }
+        body{
+            
+            font-weight:500;
+        }
+        #paaid,#ptl{
+            display:none;
+        }
+        hr{
+            border: 1px solid black;
+        }
+        button:hover
+        {
+            cursor: pointer;
+        }
+        button{
+            background-color: green;
+            color: azure;
+            border-radius: 5px;
+        }
+        .table thead th {
+        border-bottom: 2px solid black;
+        }
+        .table th, .table td {
+    border-top: 1px solid black;
+}
+        body {
+        background-image: url(back.jpg);
+        background-repeat: no-repeat;
+        background-attachment: fixed;  
+        background-size: cover;
+        }   
+        .col-lg-4,.col-lg-6{
+            border-radius:8px ;
+            margin-top: 10px;
+            border: 1px solid blue;
+        }
+        #show,#asu{
+            display: none;
+        }
+        #adu
+        {
+            background-color: antiquewhite;
+        }
+        #gst
+        {
+            display: none;
+        }
+        #spgst,#CESS
+        {
+            display: none;
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <div class="container-fluid" style="margin-bottom:10px;">
+        <div class="row" style="margin-bottom: 15px;">
+            <div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-6 offset-sm-3 col-xs-12" style="background-color: rgb(250, 241, 229);">
+                <form onsubmit="return false">
+                    <div class="form-group">
+                        <label for="invoice" style="width:100%;">Invoice No.
+                            <input type="text" class="form-control" required style="width:100%;" id="invoice">
+
+                        </label>
+                    </div>
+                    
+                    
+                    <div class="form-group">
+                        <label for="invoicedate" style="width:73%;">Invoice date
+                            <input type="date" required class="form-control" style="width:100%;" id="invoicedate">
+
+                        </label>
+                        <label for="invoiceTime">Invoice Time
+                            <input type="time" class="form-control" style="width:100%;" id="invoiceTime">
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="duedate" style="width:73%;">Due date
+                            <input type="date" required class="form-control" style="width:100%;" id="duedate">
+
+                        </label>
+                        <label for="dueTime">Due Time
+                            <input type="time" class="form-control" style="width:100%;" id="dueTime">
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="cname" style="width:100%;">Customer Name
+                            <input type="text" required class="form-control" style="width:100%;" id="cname">
+
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="address" style="width:100%;">Customer Address
+                            <textarea class="form-control" required style="width:100%;" id="address" name="add" rows="5"></textarea>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" style="width:100%;">Customer Email
+                            <input class="form-control" type="email" style="width:100%;" id="email" name="email"></input>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" style="width:100%;">Customer number
+                            <input class="form-control" required type="tel" style="width:100%;" id="phone" name="phone" pattern="[0-9]{10}"></input>
+                            <small>format : XXXXXXXXXX</small>
+                        </label>
+                        <center><button onclick="fn()" id="n8">Next</button></center>
+                        
+                    </div>
+                    <hr id="h5">
+
+                    <div class="eway">
+                        <h5>Enter E-way details</h5>
+                        <label for="ebill" style="width:100%;">Enter E-way bill number
+                            <input class="form-control" type="text" style="width:100%;" id="ebill"></input>
+                        </label>
+                        <label for="evfdate" style="width:73%;">Enter Valid From
+                            <input type="date" class="form-control" style="width:100%;" id="evfdate">
+
+                        </label>
+                        <label for="evfd">
+                            <input class="form-control" type="time" style="width:100%;" id="evfd"></input>
+                        </label>
+                        <label for="evtdate" style="width:73%;">Enter Valid to
+                            <input type="date" class="form-control" style="width:100%;" id="evtdate">
+
+                        </label>
+                        <label for="evtd">
+                            <input class="form-control" type="time" style="width:100%;" id="evtd"></input>
+                        </label>
+                        <label for="loc" style="width:100%;">Enter Location info
+                            <input class="form-control" type="text" style="width:100%;" id="loc"></input>
+                        </label>
+                        <label for="evn" style="width:100%;">Enter Vehicle number
+                            <input class="form-control" type="text" style="width:100%;" id="evn"></input>
+                        </label>
+                    </div>
+
+                    <hr>
+
+                    <div class="add" style="width:100%;">
+                        <div class="form-group" id="it1">
+                            <label for="iti1" style="width:100%;">Item
+                                <input type="text" id="iti1" style="width:100%;" class="form-control">
+                            </label>
+                            Discription
+                            <textarea id="itd1" rows="3" style="width:100%;" class="form-control"></textarea>
+                            <div class="flex form-group" style="display: flex;">
+                                <label for="r1">Rate
+                                    <input class="form-control" type="number" id="r1" step="0.01" min="1" style="width:60%;"></label>
+                                <label for="q1">
+                                Quantity<input class="form-control" type="number" id="q1" style="width:60%;" min="1" step="1"></label><br>
+                                <label for="hsn">Enter HSN CODE
+                                    <input class="form-control" type="text" id="hsn">
+                                </label>
+                                </div>
+                                <div>
+                                
+                            
+                                <h6>Please select one option</h6>
+                                <label for="flat">
+                                <input type="radio" id="flat" name="disc" onclick="d(1)"> Flat Discount</label>
+                                <label for="percent" style="float:right;">
+                                <input type="radio" id="percent" name="disc" onclick="d(2);"> Percentage Discount(%)</label>
+                                <label for="nodisc">
+                                    <input type="radio" id="nodisc" name="disc" onclick="d(3);"> No discount</label>
+                                <div id="discount" style="width:100%;margin-top: 20px;">
+                                    <label for="am" style="width:100%;"><span id="s"></span><br><input type="text" id="am" class="form-control"  style="width:100%;"></label>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <center>
+                    <button onclick="add_item()" id="b1" type="submit">
+                        Add Item
+                    </button></center><br></form><center><span id="display" style="color:blue">Please find added items listed below</span></center><br>
+                    
+
+                </div></div>
+                <div class="row" style="margin-bottom: 20px;">
+                    <div class="col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-11 col-xs-11" style="border: 0;">
+                        <div class="table table-responsive" style="width:100%;">
+                            
+                            <table id="adddd" style="width:100%;">
+                                <thead style="background-color: antiquewhite;color: black;">
+                                <tr>
+                                    <th style="width:15%;text-align: left;">Item</th>
+                                    <th style="width:30%;">Discription</th>
+                                    <th style="width:10%;text-align: center;">HSN</th>
+                                    
+                                    <th style="width:10%;text-align: center;">Rate</th>
+                                    <th style="width:10%;text-align: center;">Quantity</th>
+                                    <th style="width:15%;text-align: center;">Discount</th>
+                                    <th style="width:10%;" id="nn">remove</th>
+                                </tr>
+                            </thead>
+                            <tbody id="uuu" style="background-color: antiquewhite;">
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            <center>
+            <button onclick="next()" id="nb">
+                Next
+            </button>
+            </center><br>
+        <!-- <div class="row">
+            <div class="col-lg-4 offset-lg-4" id="asu" style="background-color: antiquewhite;">
+                <br>
+            <h6>Choose type of supply</h6>
+                                <label for="sis">
+                                    <input type="radio" name="ssgst" id="sis" onclick="sgst(1)"> State
+                                </label>
+                                <label for="sii">
+                                    <input type="radio" name="ssgst" id="sii" onclick="sgst(2)"> Interstate
+                                </label><br>
+                                <br>
+            </div>
+        </div> -->
+        <div class="row">
+            <div class="col-lg-4 offset-lg-4" id="adu">
+                    <br>
+                    <h5>Choose payment option</h5>
+                    <label for="pf">
+                        <input type="radio" name="pay" id="pf" onclick="pm(1)" required> Paid Full
+                    </label>
+                    <label for="pp">
+                        <input type="radio" name="pay" id="pp" onclick="pm(2)" required> Paid Partial
+                    </label>
+                    <label for="np">
+                        <input type="radio" name="pay" id="np" onclick="pm(3)" required> No Payment
+                    </label>
+                    
+                    <center style="margin-bottom: 20px;">
+                    <label for="paid"  id="paaid"><b>Enter Paid Amount <br></b><input class="form-control" type="number" step="0.1"  id="paid" min="1"></label></center>
+                    <center style="margin-bottom: 20px;">
+                    <label for="pt" id="ptl"><b>Paid through</b>
+                        <input type="text" id="pt" class="form-control">
+                    </label>
+                </center>
+            <center style="margin-bottom: 20px;">
+                <button onclick="prnt()" id="nextbtn">
+                    Print
+                </button>
+                </center>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+
+    var i = 1;var flag=0; var discount = 0;var k,sf,gt,ef=0;
+
+    function fn()
+    {
+        if(confirm("Do u want to generate E-way Bill?")==true)
+        {
+            ef=1;
+            document.querySelector(".eway").style.display="initial";
+            document.querySelector(".add").style.display="initial";
+            document.getElementById("b1").style.display="initial";
+            document.getElementById("h5").style.display="initial";
+            document.getElementById("n8").style.display="none";
+            
+        }
+        else
+        {
+            ef=2;
+            document.querySelector(".add").style.display="initial";
+            document.getElementById("b1").style.display="initial";
+            document.getElementById("n8").style.display="none";
+            
+        }
+    }
+
+
+    var flag3=0;
+    
+    // function sgst(a)
+    // {
+    //     if(a==1)
+    //     {
+    //         localStorage.setItem("sgst",1);
+    //     }
+    //     else if(a==2)
+    //     {
+    //         localStorage.setItem("sgst",2);
+    //     }
+    // }
+
+    // function gstt(b)
+    // {   document.getElementById("gst").style.display="initial";
+    //     document.getElementById("CESS").style.display="initial";
+    //     document.getElementById("spgst").style.display="initial";
+    //     if(b==1)
+    //     {
+    //         // flag3=1;
+    //         gt="Incl.";
+
+    //     }
+    //     else
+    //     {
+    //         // flag3=2;
+    //         gt = "Excl.";
+    //     }
+    // }
+    
+    dum(i);
+
+    function d(a)
+    {
+        //document.getElementById('GST').style.display="initial";
+        document.getElementById('discount').style.display="initial";
+        if(a==1)
+        {
+            var hi = document.getElementById('s');
+            hi.innerHTML="Enter Discount Amount";
+            k = 1;
+
+        }
+        else if(a==2) 
+        {
+            var hi = document.getElementById('s');
+            hi.innerHTML="Enter Discount Rate";
+            k = 2;
+        }
+        else{
+            document.getElementById("discount").style.display="none";
+            k = 3;
+        }
+        
+        
+    }
+
+    function add_item()
+    {   
+        //var GSTN = document.getElementById('GSTN').value;
+        //var LIC = document.getElementById("LIC").value;
+        var item = document.getElementById('iti1').value;
+        var dis = document.getElementById('itd1').value;
+        var rate = document.getElementById('r1').value;
+        var quant = document.getElementById('q1').value;
+        var hsn = document.getElementById('hsn').value;
+        var diss = document.getElementById('am').value;
+        //var gst = document.getElementById("gst").value;
+        //var cess = document.getElementById("cess").value;
+        let invdate = document.getElementById("invoicedate").value;
+        let invTime = document.getElementById("invoiceTime").value;
+        let dueTime = document.getElementById("dueTime").value;
+        let duedate = document.getElementById("duedate").value;
+        if(k==1)
+        {
+            var t = '₹'+diss;
+            k=0;
+        }
+        else if(k==2)
+        {
+            var t = diss+'%';
+            k=0;
+        }
+        else
+        {
+            var t="-";
+            k=0;
+        }
+        var tab = document.getElementById('uuu');
+        tab.style.backgroundColor="antiquewhite";
+        if(rate!=""){
+        rate = parseFloat(rate).toFixed(2);
+        }
+        if(t!="-"){
+        var template = `<tr style="width:100%;">
+                                    <td style="width:15%;text-align: left;" id="it${i}">${item}</td>
+                                    <td style="width:30%;" id="id${i}">${dis}</td>
+                                    <td style="width:10%;text-align: center;" id="ih${i}">${hsn}</td>
+                                    
+                                    <td style="width:10%;text-align: center;" id="ir${i}">₹${rate}</td>
+                                    <td style="width:10%;text-align: center;" id="iq${i}">${quant}</td>
+                                    <td style="width:15%;text-align: center;" id="idi${i}">${t}</td>
+                                    <td id="rem${i}" style="width:10%;" class="rem"><button onclick="deletet()" class="next">Delete</button></td>
+                                </tr>`;
+        if(item!=""&&rate!=""&&quant!=""&&quant>0&&hsn!=""&&diss!=""&&invdate!=""&&duedate!="")
+        {
+            tab.style.backgroundColor="antiquewhite";
+        tab.innerHTML += template;
+        i++;
+        dum(i);
+        document.getElementById('iti1').value="";
+        document.getElementById('itd1').value="";
+        document.getElementById('r1').value="";
+        document.getElementById('q1').value="";
+        document.getElementById('hsn').value="";
+        document.getElementById('am').value="";
+        // document.getElementById("gst").value="";
+        // document.getElementById("cess").value="";
+        let w = document.getElementsByTagName("input");
+        for(j=0;j<w.length;j++)
+        {
+            if(w[j].type=="radio")
+            {
+                w[j].checked=false;
+            }
+        }
+        //document.getElementById('GST').style.display="none";
+        //document.getElementById('CESS').style.display="none";
+        document.getElementById('discount').style.display="none";
+        }
+    }
+    else
+    {
+        var template = `<tr style="width:100%;">
+                                    <td style="width:15%;text-align: left;" id="it${i}">${item}</td>
+                                    <td style="width:30%;" id="id${i}">${dis}</td>
+                                    <td style="width:10%;text-align: center;" id="ih${i}">${hsn}</td>
+                                    
+                                    <td style="width:10%;text-align: center;" id="ir${i}">₹${rate}</td>
+                                    <td style="width:10%;text-align: center;" id="iq${i}">${quant}</td>
+                                    <td style="width:15%;text-align: center;" id="idi${i}">${t}</td>
+                                    <td id="rem${i}" style="width:10%;" class="rem"><button onclick="deletet()" class="next">Delete</button></td>
+                                </tr>`;
+        if(item!=""&&rate!=""&&quant!=""&&quant>0&&hsn!=""&&invdate!=""&&duedate!="")
+        {
+            tab.style.backgroundColor="antiquewhite";
+        tab.innerHTML += template;
+        i++;
+        dum(i);
+        document.getElementById('iti1').value="";
+        document.getElementById('itd1').value="";
+        document.getElementById('r1').value="";
+        document.getElementById('q1').value="";
+        document.getElementById('hsn').value="";
+        document.getElementById('am').value="";
+        // document.getElementById("gst").value="";
+        // document.getElementById("cess").value="";
+        let w = document.getElementsByTagName("input");
+        for(j=0;j<w.length;j++)
+        {
+            if(w[j].type=="radio")
+            {
+                w[j].checked=false;
+            }
+        }
+        //document.getElementById('GST').style.display="none";
+        //document.getElementById('CESS').style.display="none";
+        document.getElementById('discount').style.display="none";
+        }
+    }
+    }
+    
+    
+
+    var tbl = document.getElementById('adddd'),rIndex,cIndex;
+
+    var itms=[],disc=[],hsn=[],raat=[],qunt = [],diss=[],gst=[],gtt=[],cess=[];
+    function deletet()
+    {
+        for(let h = 0;h<tbl.rows.length;h++)
+        {   
+            for(let w = 0;w<tbl.rows[h].cells.length;w++)
+            {   
+            
+                tbl.rows[h].cells[w].onclick=function(){
+                rIndex = this.parentElement.rowIndex;
+                tbl.deleteRow(rIndex);
+            }
+            }
+        }
+        i--;
+        dum(i);
+    }
+
+
+    function next()
+    {   let h;
+        localStorage.setItem("ef",ef);
+        if(ef==1)
+        {
+            var eb=document.getElementById("ebill").value;
+            var evfd=document.getElementById("evfd").value;
+            var evtd=document.getElementById("evtd").value;
+            var loc=document.getElementById("loc").value;
+            var evn=document.getElementById("evn").value;
+            var evfdate = document.getElementById("evfdate").value;
+            var evtdate = document.getElementById("evtdate").value;
+            localStorage.setItem("evfdate",evfdate);
+            localStorage.setItem("evtdate",evtdate);
+            localStorage.setItem("eb",eb);
+            localStorage.setItem("evfd",evfd);
+            localStorage.setItem("evtd",evtd);
+            localStorage.setItem("loc",loc);
+            localStorage.setItem("evn",evn);
+
+        }
+        //document.getElementById("asu").style.display="initial";
+        for(h = 1;h<tbl.rows.length;h++)
+        {   
+            itms.push(tbl.rows[h].cells[0].innerText);
+            disc.push(tbl.rows[h].cells[1].innerText);
+            hsn.push(tbl.rows[h].cells[2].innerText);
+            raat.push(tbl.rows[h].cells[3].innerText);
+            qunt.push(tbl.rows[h].cells[4].innerText);
+            diss.push(tbl.rows[h].cells[5].innerText);
+            //gst.push(tbl.rows[h].cells[6].innerText);
+            //gtt.push(tbl.rows[h].cells[7].innerText);
+            //cess.push(tbl.rows[h].cells[8].innerText);
+
+
+        }
+        localStorage.setItem("h",h-1);
+
+        localStorage.setItem("itms[50]",itms);
+        localStorage.setItem("disc[50]",disc);
+        localStorage.setItem("hsn[50]",hsn);
+        localStorage.setItem("raat[50]",raat);
+        localStorage.setItem("qunt[50]",qunt);
+        localStorage.setItem("diss[50]",diss);
+        //localStorage.setItem("gst[50]",gst);
+        //localStorage.setItem("gt[50]",gtt);
+        //localStorage.setItem("cess[50]",cess);
+        
+
+        var clss = document.getElementsByClassName("next");
+        var rem = document.getElementsByClassName("rem");
+        for (let l = 0; l < clss.length; l++) 
+        {
+            clss[l].style.display = "none";
+            rem[l].style.display = "none";
+        }
+        document.getElementById("nb").style.display="none";
+        document.getElementById("nn").style.display="none";
+        for(let g = 0;g<tbl.rows.length;g++)
+        {
+            tbl.rows[g].deleteCell(6);
+        }
+
+        document.getElementById('b1').style.display="none";
+        document.getElementById('it1').style.display="none";
+        document.getElementById('adu').style.display="initial";
+        
+
+    }
+    function dum(a)
+    {
+        if(a==1){
+            document.getElementById("nb").style.display="none";
+            document.getElementById('adddd').style.display="none";
+            document.getElementById('display').style.display="none";
+            
+            
+        }
+        else{
+            document.getElementById("nb").style.display="initial";
+            document.getElementById('adddd').style.display="initial";
+            document.getElementById('display').style.display="initial";
+        }
+    }
+    var flag2=0;
+    function pm(s)
+    {
+        document.getElementById('ptl').style.display="initial";
+        if(s==1)
+        {
+            document.getElementById('nextbtn').style.display="initial";
+            document.getElementById("paaid").style.display="none";
+            flag2=0;
+        }
+        else if(s==2)
+        {
+            document.getElementById('nextbtn').style.display="initial";
+            document.getElementById("paaid").style.display="initial";
+            flag2=1;
+            
+        }
+        else if(s==3)
+        {
+            document.getElementById('nextbtn').style.display="initial";
+            document.getElementById("paaid").style.display="none";
+            document.getElementById("ptl").style.display="none";
+            flag2=3;
+        }
+    }
+
+    function prnt()
+    {
+        if(confirm("Do u want to print company name?")==true)
+        {
+            localStorage.setItem("cl",1);
+        }
+        else{
+            localStorage.setItem("cl",5);
+        }
+        let pt = "-";
+        pt = document.getElementById("pt").value;
+        let invc = document.getElementById("invoice").value;
+        let cname = document.getElementById("cname").value;
+        let cadd = document.getElementById("address").value;
+        let email = document.getElementById("email").value;
+        let ph = document.getElementById("phone").value;
+        let invdate = document.getElementById("invoicedate").value;
+        let invTime = document.getElementById("invoiceTime").value;
+        let dueTime = document.getElementById("dueTime").value;
+        let duedate = document.getElementById("duedate").value;
+        ///var GSTN = document.getElementById('GSTN').value;
+        ///var LIC = document.getElementById("LIC").value;
+        //localStorage.setItem("GSTN",GSTN);
+        //localStorage.setItem("LIC",LIC);
+        localStorage.setItem("dueTime",dueTime);
+        localStorage.setItem("invoiceTime",invTime);
+        localStorage.setItem("invdate",invdate);
+        localStorage.setItem("duedate",duedate);
+        localStorage.setItem("invc",invc);
+        localStorage.setItem("cname",cname);
+        localStorage.setItem("cadd",cadd);
+        localStorage.setItem("email",email);
+        localStorage.setItem("ph",ph);
+        localStorage.setItem("k",k);
+        localStorage.setItem("flag3",flag3);
+        localStorage.setItem("pt",pt);
+        localStorage.setItem("flag2",flag2);
+    
+        if(flag2==1)
+        {   var ppa = document.getElementById("paid").value;
+            ppa = parseFloat(ppa).toFixed(2);
+            if(ppa!=""&&pt!="")
+            {  
+                localStorage.setItem("paid",ppa);
+                window.location="no_gst_final.html";
+                
+            }
+        }
+        else if(flag2==0)
+        {
+            if(pt!="")
+                window.location="no_gst_final.html";
+        }
+        else if(flag2==3)
+        {   window.location="no_gst_final.html";
+        }
+        
+        document.getElementById("pf").value="";
+        document.getElementById("pp").value="";
+        document.getElementById("paaid").value="";
+        document.getElementById("invoice").value="";
+        document.getElementById("cname").value="";
+        document.getElementById("address").value="";
+        document.getElementById("email").value="";
+        document.getElementById("phone").value="";
+        document.getElementById("ebill").value="";
+        document.getElementById("evfd").value="";
+        document.getElementById("evtd").value="";
+        document.getElementById("loc").value="";
+        document.getElementById("evn").value="";
+        document.getElementById("pt").value="";
+        document.getElementById("duedate").value="";
+        document.getElementById("invoiceTime").value="";
+        document.getElementById("invoicedate").value="";
+        document.getElementById("dueTime").value="";
+
+
+    }
+    
+
+</script>

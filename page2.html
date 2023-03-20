@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pg2</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <style>
+        p
+        {
+            margin-bottom: 0.4rem;
+        }
+        .table th, .table td {
+        padding: 0.50rem;
+        }
+        #headd
+        {
+            display: none;
+        }
+        .space
+        {
+            
+            display:inline-block;
+            margin-top: 8px;
+        }
+        #table thead th,#table td
+        {
+            vertical-align: middle;
+            border: 1px solid black;
+        }
+        #tblee tr th,#tblee tr td{
+            border: 1px solid black;
+        }
+        #tbl3 tr th,#tbl3 tr td
+        {
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+        }
+        #tbl4 th,#tbl4 td
+        {
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+        }
+        #tblee tr th
+        {
+            padding-left: 5px;
+        }
+        #tblee tr td
+        {
+            padding-right: 5px;
+        }
+        hr{
+            border: 0.5px solid black;
+        }
+        #eway
+        {
+            display: none;
+        }
+        @media print 
+        {
+            #nodis
+            {
+                display: none;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div id="headd">
+        <center><h1 style="margin-bottom: 0px;margin-top: 10px;"><b>Quick-Fix Point</b></h1></center>
+        <center><small>Have a "Querry", Don't "Worry"</small></center>
+    </div>
+        <center style="margin-top: 5px;"><h4><b>INVOICE</b></h4></center><hr style="margin: orem;"><br>
+        
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="display:flex;">
+                <img src="slogo.jpg" alt="logo" style="width:50%;">
+                <div style="margin-top:25px;">
+                    <h5><b>Sujay Hegde</b></h5>
+                    <p>Kriahna Layout, Hancharata</p>
+                    <p>Hulekal, Sirsi, UK</p> 
+                    <p>Karnataka, 581336</p>
+                    <?xml version="1.0" encoding="utf-8"?><svg width="13px" height="18px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 72.93 122.88" style="enable-background:new 0 0 72.93 122.88" xml:space="preserve"><style type="text/css">.st0{fill-rule:evenodd;clip-rule:evenodd;}</style><g><path class="st0" d="M10.94,0h51.04C68,0,72.93,4.93,72.93,10.94v100.99c0,6.02-4.93,10.94-10.94,10.94l-51.04,0 C4.93,122.88,0,117.95,0,111.94V10.95C0,4.93,4.93,0,10.94,0L10.94,0z M36.46,100.1c3.91,0,7.09,3.17,7.09,7.09 c0,3.91-3.18,7.09-7.09,7.09c-3.92,0-7.09-3.17-7.09-7.09C29.37,103.28,32.55,100.1,36.46,100.1L36.46,100.1z M25.17,8.86h22.59 c0.16,0,0.3,0.14,0.3,0.3v3.3c0,0.16-0.14,0.3-0.3,0.3H25.17c0,0,0,0,0,0c-0.16,0-0.3-0.13-0.3-0.3v0l0-3.3c0,0,0,0,0,0 C24.87,8.99,25,8.86,25.17,8.86L25.17,8.86L25.17,8.86L25.17,8.86z M9.65,21.53h53.63c0.98,0,1.78,0.81,1.78,1.78v70.01 c0,0.97-0.81,1.78-1.78,1.78H9.65c-0.97,0-1.78-0.8-1.78-1.78V23.3C7.87,22.33,8.67,21.53,9.65,21.53L9.65,21.53z"/></g></svg>
+                    <p style="display:inline;">+91 9449993075</p><br>
+                    <img src="email.png" alt="cv" width="22px">
+                    <p style="display: inline;">sujayhegdehh@gmail.com</p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div style="float: right;text-align:start;">
+                <div><span><b>GSTIN : </b></span><span style="float:right" id="gstin"></span></div>
+                <div><span><b>License No : </b></span><span style="float:right" id="LIC"></span></div><br>
+                <span class="space"><b>INVOICE No. : </b></span>
+                <span id="invc"></span><br>
+                <span class="space"><b>INVOICE DATE : </b></span>
+                <span id="date"></span><br>
+                <span class="space"><b>DUE DATE : </b></span>
+                <span id="due"></span><br>
+                <span class="space"><b>BALANCE DUE</b></span><br>
+                <span id="payable" style="color: blue;"></span>
+            </div>
+            </div>
+        </div>
+        <hr style="margin:1px;">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <br>
+                <h6><b>BILL TO</b></h6>
+                <h5><b id="cname"></b></h5>
+                <p style="line-height:24px;" id="cadd"></p>
+                <?xml version="1.0" encoding="utf-8"?><svg width="15px" height="20px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 72.93 122.88" style="enable-background:new 0 0 72.93 122.88" xml:space="preserve"><style type="text/css">.st0{fill-rule:evenodd;clip-rule:evenodd;}</style><g><path class="st0" d="M10.94,0h51.04C68,0,72.93,4.93,72.93,10.94v100.99c0,6.02-4.93,10.94-10.94,10.94l-51.04,0 C4.93,122.88,0,117.95,0,111.94V10.95C0,4.93,4.93,0,10.94,0L10.94,0z M36.46,100.1c3.91,0,7.09,3.17,7.09,7.09 c0,3.91-3.18,7.09-7.09,7.09c-3.92,0-7.09-3.17-7.09-7.09C29.37,103.28,32.55,100.1,36.46,100.1L36.46,100.1z M25.17,8.86h22.59 c0.16,0,0.3,0.14,0.3,0.3v3.3c0,0.16-0.14,0.3-0.3,0.3H25.17c0,0,0,0,0,0c-0.16,0-0.3-0.13-0.3-0.3v0l0-3.3c0,0,0,0,0,0 C24.87,8.99,25,8.86,25.17,8.86L25.17,8.86L25.17,8.86L25.17,8.86z M9.65,21.53h53.63c0.98,0,1.78,0.81,1.78,1.78v70.01 c0,0.97-0.81,1.78-1.78,1.78H9.65c-0.97,0-1.78-0.8-1.78-1.78V23.3C7.87,22.33,8.67,21.53,9.65,21.53L9.65,21.53z"/></g></svg>
+                    <h6 id="phone" style="display:inline;">
+                    </h6><br>
+                    <img src="email.png" alt="cv" width="22px">
+                    <h6 id="email" style="display: inline;"></h6>
+                
+            </div>
+            <div class="col-lg-4 offset-lg-4 col-md-4 offset-md-4 col-sm-4 offset-sm-4" id="eway">
+                <br>
+                
+                <h6><b style="text-decoration: underline;">E-Way Details</b></h6>
+                <p>E-way Bill No : <span id="eb"></span></p> 
+                <p>Valid from : <span id="evf"></span></p> 
+                <p>Valid to : <span id="evt"></span></p>  
+                <p>Location : <span id="el"></span></p> 
+                <p>Vehicle Info : <span id="evn"></span></p>  
+            
+
+            </div>
+            
+            <br><br>
+            
+            <div class="table" style="margin-top: 15px;">
+                <span style="border : 1px solid black;float : right;padding:3px 15px 3px 15px;" id="sdis"></span>
+                <table style="width:100%;" id="table" class="table">
+                    <thead>
+                <tr>
+                    <th style="width:2%;text-align: center;" rowspan="2">Sl No.</th>
+                    <th style="width:21%;text-align: center;" rowspan="2">Description</th>
+                    <th style="width:6%;text-align: center;" rowspan="2">HSN Code</th>
+                    <th style="text-align:center;width:8%;" rowspan="2">Price</th>
+                    <th style="width:8%;text-align:center;" rowspan="2">Qty</th>
+                    <th style="text-align:center;width:10%;" rowspan="2">Sub Total</th>
+                    <th style="text-align:center;width:6%;" rowspan="2">Discount</th>
+                    <th style="text-align:center;width:8%;" rowspan="2">Taxable</th>
+                    <th style="text-align: center;width:20%;" colspan="4">GST</th>
+                    <th style="text-align: center;width:10%;" rowspan="2">TOTAL</th>
+                </tr>
+                <tr>
+                    <th style="text-align: center;">Rate</th>
+                    <th style="text-align: center;">CGST</th>
+                    <th style="text-align: center;" id="sgs">SGST</th>
+                    <th style="text-align: center;">Cess.</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+            </tbody>
+
+                
+            </table>
+
+            </div>
+            
+            
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                
+                <div style="text-align: center;"><p style="font-size: larger;text-decoration: underline;">Total Amount In Words</p>
+                <span id="words" style="font-size: large;font-weight: 500;"></span>
+                <hr style="border: 0.3px solid black;">
+                </div>
+                <div style="position: absolute;bottom:0;">
+               <h5 style="margin-bottom: 20px;text-decoration: underline;">Payment Info</h5>
+               
+               <p><b>Paid Through : </b><span id="pt">-</span></p>
+               <p><b>Payment Instructions</b><br>
+                Paytm/GPay/PPay/BharatPay/AmazonPay</p>
+                <p style="margin-bottom: 20px;"><b>PAYPAL : </b>
+                    sujayhegdehh@gmail.com</p>
+                </div>
+
+
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div style="width:100%;">
+                    <table style="width:100%;border:0;" id="tblee">
+                    <tr>
+                        <th style="text-align: start;">SUBTOTAL</th>
+                        <td style="text-align:end;" id="sb"></td>
+
+                    </tr><tr>
+                        <th style="text-align: start;">DISCOUNT</th>
+                        <td style="text-align:end;" id="dis"></td>
+
+                    </tr>
+                    <tr>
+                        <th style="text-align: start;">TAXABLE</th>
+                        <td style="text-align:end;" id="tax"></td>
+
+                    </tr><tr>
+                        <th style="text-align: start;">CGST</th>
+                        <td style="text-align:end;" id="gst" class="sgst"></td>
+                        </tr>
+                        <tr>
+                            <th style="text-align: start;" id="sgss"></th>
+                            <td style="text-align:end;" id="gst" class="sgst"></td>
+                            </tr>
+                            <tr>
+                                <th style="text-align: start;">Cess.</th>
+                                <td style="text-align:end;" id="cesss"></td>
+                                </tr>
+                    </table>
+                    <br>
+                    <table style="width:100%;border:0;" id="tbl3">
+                    <tr>
+                        <th style="text-align: start;font-weight: bold;"><big>TOTAL</big></th>
+                        <td style="text-align:end;font-weight: bold;" id="total"><big></big></td>
+                    </tr>
+
+                    <tr>
+                        <th style="text-align: start;">AMOUNT PAID</th>
+                        <td style="text-align:end;font-weight: bold;" id="paid"></td>
+
+                    </tr>
+                    
+                </table><br>
+                <table style="width:100%;" id="tbl4">
+                    <tr>
+                        <th style="text-align:start;">
+                            BALANCE DUE
+                        </th>
+                        <td style="text-align: end;">
+                            <h5 id="payf" style="color:blue"></h5>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+                </div>
+            </div>
+        </div>
+        <hr style="margin:0;"><br>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <p style="margin-bottom: 60px;">This is Computer generated Invoice, No signature required. <br><br>
+                **Disclaimer: <br>
+                1. I am not responsible for any content, code or any other
+                impression. <br>
+                2. I do not provide any personal warranties or guarantees
+                (Refer T&C of Product) <br>
+                3. I am not liable for any special, direct, indirect,
+                consequential, or incidental damages. <br>
+                4. I reserve the right to make additions, deletions, or
+                modifications to the contents on the Service at any time
+                without prior notice. <br>
+            </p> 
+            <center style="margin-top: 20px;margin-bottom: 20px;"><button onclick="window.print()" style="background-color: green;color:azure;cursor: pointer;width: 13%;border:2px solid black;border-radius: 2px;" id="nodis"><b>Print Again</b></button></center>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var dn="",GSTN ="",LIC = "" ;
+    GSTN = localStorage.getItem("GSTN");
+    LIC = localStorage.getItem("LIC");
+    document.getElementById("gstin").innerText=GSTN;
+    document.getElementById("LIC").innerText=LIC;
+    var duedate=localStorage.getItem("duedate");
+    var invdate = localStorage.getItem("invdate");
+    var invTime = localStorage.getItem("invoiceTime");
+    var dueTime = localStorage.getItem("dueTime");
+    document.getElementById("date").innerText=invdate + "  " + invTime;
+    document.getElementById("due").innerText=duedate+"  "+dueTime;
+    var cl = localStorage.getItem("cl");
+    if(cl==1)
+    {
+        document.getElementById("headd").style.display="initial";
+    }
+    else if(cl==5)
+    {
+        document.getElementById("headd").style.display="none";
+    }
+    
+    var ef=localStorage.getItem("ef");
+    if(ef==1)
+    {
+        
+        var eb = localStorage.getItem("eb");
+        var evfd = localStorage.getItem("evfd");
+        var evtd = localStorage.getItem("evtd");
+        var loc = localStorage.getItem("loc");
+        var evn = localStorage.getItem("evn");
+        document.getElementById("eb").innerText=eb;
+        document.getElementById("evf").innerText=evfd;
+        document.getElementById("evt").innerText=evtd;
+        document.getElementById("el").innerText=loc;
+        document.getElementById("evn").innerText=evn;
+        document.getElementById("eway").style.display="initial";
+
+    }
+    var pt = localStorage.getItem("pt");
+    document.getElementById("pt").innerText=pt;
+    var invc = localStorage.getItem("invc");
+    var cname = localStorage.getItem("cname");
+    var cadd = localStorage.getItem("cadd");
+    var email = localStorage.getItem("email");
+    var ph = localStorage.getItem("ph");
+    var h = localStorage.getItem("h");
+    document.getElementById("invc").innerText = invc;
+    document.getElementById("cname").innerText = cname;
+    document.getElementById("cadd").innerText = cadd;
+    document.getElementById("phone").innerText = "+91 "+ph;
+    document.getElementById("email").innerText = email;
+
+    var itm = localStorage.getItem("itms[50]");
+    var ds = localStorage.getItem("disc[50]");
+    var hsn = localStorage.getItem("hsn[50]");
+    var raat = localStorage.getItem("raat[50]");
+    var qunt = localStorage.getItem("qunt[50]");
+    var diss = localStorage.getItem("diss[50]");
+    var gst = localStorage.getItem("gst[50]");
+    var gt = localStorage.getItem("gt[50]");
+    var cess =  localStorage.getItem("cess[50]");
+    var sgst = localStorage.getItem("sgst");
+
+    if(sgst==2)
+    {
+        document.getElementById('sgs').innerText="IGST";
+        document.getElementById('sgss').innerText="IGST";
+        document.getElementById("sdis").innerText="Type of Supply : Interstate";
+    }
+    else
+    {
+        document.getElementById('sgs').innerText="SGST";
+        document.getElementById('sgss').innerText="SGST";
+        document.getElementById("sdis").innerText="Type of Supply : State";
+    }
+
+    itm = itm.split(",");
+    ds = ds.split(",");
+    raat = raat.split(",");
+    qunt = qunt.split(",");
+    hsn = hsn.split(",");
+    diss=diss.split(",");
+    gst = gst.split(",");
+    gt = gt.split(",");
+    cess = cess.split(",");
+
+
+    var tble = document.querySelector("#tbody");
+
+
+
+    function amount(raat,qunt)
+    {   raat=raat.slice(1);
+        var tamt = parseFloat(raat)*qunt;
+        return tamt;
+    }
+
+    function gsti(total,gst)
+    {
+        gst = parseFloat(gst);
+        
+        var gsta = total*(gst)/(100+gst);
+        //gsta = gsta.toFixed(2);
+        return gsta;
+    }
+
+    function incl(total,gst,cess)
+    {
+        //it is inclusive
+        total=total.toFixed(2);
+        
+        var gsta = gsti(total,gst);
+        
+        var u = cess/100*gsta;
+        // console.log(u);
+        
+        var taxable = total-(parseFloat(gsta)+parseFloat(u));
+        // console.log(taxable);
+        return taxable;//returns taxable
+    }
+
+
+    function discountd(d,s)
+    {
+        var y,sb;
+        y = d.substring(d.length-1, d.length);
+        // console.log(y);
+        
+            if(y=="%")
+            {
+                sb=d.substring(0, d.length-1);
+                sb = parseFloat(sb);
+                var b = parseInt(sb);
+                dn="("+b+"%)";
+                // console.log(sb);
+                return parseFloat(s)*sb/100;
+            }
+            else
+            {
+                sb=d.substring(1, d.length);
+                sb = parseFloat(sb);
+                // console.log(sb);
+                dn="(Flat)";
+                return sb;
+            }
+        
+    }
+    var st_sum=0,dis_sum=0,tax_sum=0,cgst_sum=0,cess_sum=0,total_sum=0;
+    for(var i=0;i<h;i+=1)
+    {
+        var st=amount(raat[i],qunt[i]);
+        st_sum=st_sum+st;
+        //st = st.toFixed(2);
+        // console.log(st);
+        var dis = discountd(diss[i],st);
+        dis_sum=dis_sum+parseFloat(dis);
+        // console.log(dis);
+        //console.log(gt[0]);
+        if(gt[i]=="Excl.")
+        {
+            var taxable = st-dis;
+            //taxable = taxable.toFixed(2);
+            tax_sum=tax_sum+taxable;
+            // console.log(taxable);
+            var gsta = taxable*parseFloat(gst[i])/100;
+            //gsta = gsta.toFixed(2);
+            
+            // console.log(gsta);
+
+            var cesa = gsta*parseFloat(cess[i])/100;
+            //cesa = cesa.toFixed(2);
+            cess_sum=cess_sum+parseFloat(cesa);
+            // console.log(cesa);
+            var sg = gsta/2;
+            cgst_sum=cgst_sum+parseFloat(sg);
+            // console.log(sg);
+            var total = parseFloat(gsta)+parseFloat(cesa)+parseFloat(taxable);
+            total = parseFloat(total);
+            total_sum = total_sum+parseFloat(total);
+            // console.log(total);
+
+
+        }
+        else
+        {
+            gst[i]=gst[i].substring(0, gst[i].length);
+            gst[i] = parseFloat(gst[i]);
+            cess[i]=cess[i].substring(0, cess[i].length);
+            var w = parseFloat(cess[i]);
+            var taxable = incl(st-dis,gst[i],w);
+            //taxable = parseFloat(taxable);
+            tax_sum=tax_sum+taxable;
+            // console.log(taxable);
+
+            var gsta = gsti(st-dis,gst[i]);
+
+            gsta = parseFloat(gsta);
+            //cgst_sum=cgst_sum+gsta;
+            // console.log(gsta);
+            var cesa = gsta*w/100;
+            cesa = cesa;
+            cess_sum=cess_sum+parseFloat(cesa);
+            var sg = gsta/2;
+            sg = parseFloat(sg);
+            cgst_sum=cgst_sum+parseFloat(sg);
+            // console.log(sg);
+            var total = st-dis;
+            total=parseFloat(total);
+            total_sum = total_sum+parseFloat(total);
+
+
+
+        }
+        raat[i]=raat[i].slice(1);
+        
+        var temp = `<tr>
+                    <td style="width:2%;text-align: center;">${i+1}</td>
+                    <td style="width:21%;text-align: start;">
+                        <h6>${itm[i]}</h6><p>${ds[i]}</p>
+                    </td><td style="width:6%;text-align: center;">${hsn[i]}</td>
+                    <td style="text-align: center;width:8%;">${parseFloat(raat[i]).toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>                    
+                    <td style="width:8%;text-align: center;">${qunt[i]}</td>
+                    <td style="text-align: center;width:10%;">${st.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+                    <td style="text-align: center;width:6%;">${parseFloat(dis).toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})}<br><span style="font-weight: 300;">${dn}</span></td>
+                    <td style="text-align: center;width:8%;">${taxable.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+                    <td style="text-align: center;width:5%;">${parseInt(gst[i])}% <br> <span style="font-weight: 100;">${gt[i]}</span></td>
+                    <td style="text-align: center;width:5%;">${parseFloat(sg).toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})} <br><span style="font-weight: 100;">${parseInt(gst[i])/2}%</span></td>
+                    <td style="text-align: center;width:5%;">${parseFloat(sg).toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})} <br><span style="font-weight: 100;">${parseInt(gst[i])/2}%</span></td>
+                    <td style="text-align: center;width:5%;">${cesa.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})}<br><span style="font-weight: 100;">${cess[i]}</span></td>
+                    <td style="text-align: center;width:10%;">${total.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+                </tr> `;
+                tble.innerHTML+=temp;
+        
+    }
+    console.log(st_sum.toLocaleString("en-IN"));
+    let temple = `<tr>
+                    <td colspan="5" style="text-align: center;width:41%;"><b>TOTAL</b></td>
+                    <td style="text-align: center;width:10%;">${st_sum.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+                    <td style="text-align: center;width:6%;">${dis_sum.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+                    <td style="text-align: center;width:8%;">${tax_sum.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+                    <td style="text-align: center;width:5%;"></td>
+                    <td style="text-align: center;width:5%;">${cgst_sum.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+                    <td style="text-align: center;width:5%;">${cgst_sum.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+                    <td style="text-align: center;width:5%;">${cess_sum.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+                    <td style="text-align: center;width:10%;">${total_sum.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+                </tr>`;
+    tble.innerHTML+=temple;
+
+    document.getElementById("sb").innerText=st_sum.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2});
+    document.getElementById("dis").innerText=dis_sum.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2});
+    document.getElementById("tax").innerText=tax_sum.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2});
+    let y = document.getElementsByClassName("sgst");
+    for(let k=0;k<y.length;k++)
+    {
+        y[k].innerText=cgst_sum.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2});
+    }
+    document.getElementById("cesss").innerText=cess_sum.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2});
+    document.getElementById("total").innerText=total_sum.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2});
+    var flag2 = localStorage.getItem("flag2");
+    if(flag2==1)
+    {
+        var ppa=localStorage.getItem("paid");
+        ppa = parseFloat(ppa).toFixed(2);
+    }
+    else if(flag2==0)
+    {
+        var ppa = total_sum.toFixed(2);
+    }
+    else{
+        var ppa = 0.00;
+    }
+    ppa = parseFloat(ppa);
+    document.getElementById("paid").innerText=ppa.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+    var bd = parseFloat(total_sum).toFixed(2)-parseFloat(ppa).toFixed(2);
+    bd = parseFloat(bd);
+    
+    document.getElementById("payf").innerText="INR "+bd.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2});
+    document.getElementById("payable").innerText="INR "+bd.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+    var a = ['','One ','Two ','Three ','Four ', 'Five ','Six ','Seven ','Eight ','Nine ','Ten ','Eleven ','Twelve ','Thirteen ','Fourteen ','Fifteen ','Sixteen ','Seventeen ','Eighteen ','Nineteen '];
+var b = ['', '', 'Twenty','Thirty','Forty','Fifty', 'Sixty','Seventy','Eighty','Ninety'];
+
+function inWords (num) 
+{
+
+    if ((num = num.toString()).length > 9) return 'overflow';
+    n = ('000000000' + num).substr(-9).match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
+    if (!n) return; var str = '';
+    str += (n[1] != 0) ? (a[Number(n[1])] || b[n[1][0]] + ' ' + a[n[1][1]]) + 'crore ' : '';
+    str += (n[2] != 0) ? (a[Number(n[2])] || b[n[2][0]] + ' ' + a[n[2][1]]) + 'lakh ' : '';
+    str += (n[3] != 0) ? (a[Number(n[3])] || b[n[3][0]] + ' ' + a[n[3][1]]) + 'thousand ' : '';
+    str += (n[4] != 0) ? (a[Number(n[4])] || b[n[4][0]] + ' ' + a[n[4][1]]) + 'hundred ' : '';
+    str += (n[5] != 0) ? ((str != '') ? 'and ' : '') + (a[Number(n[5])] || b[n[5][0]] + ' ' + a[n[5][1]]) : '';
+    return str;
+}
+
+
+
+
+
+function withDecimal(n) {
+    n = n.toFixed(2);
+    var nums = n.toString().split('.')
+    var whole = inWords(nums[0]);
+    if (nums.length == 2) {
+        if(nums[1]!=0)
+        {
+            var fraction = inWords(nums[1])
+            return whole + 'and ' + fraction +" Paise";
+        }
+        else
+        {
+            return whole;
+        }    
+    } else {
+        return whole;
+    }
+}
+document.getElementById('words').innerHTML = "Rupees "+withDecimal(total_sum)+" Only";
+    
+    window.print();
+</script>
