@@ -407,8 +407,8 @@
             {
                 sb=d.substring(0, d.length-1);
                 sb = parseFloat(sb);
-                
-                dn="("+sb+"%)";
+                var b = parseFloat(sb).toFixed(2);
+                dn="("+b+"%)";
                 // console.log(sb);
                 return parseFloat(s)*sb/100;
             }
