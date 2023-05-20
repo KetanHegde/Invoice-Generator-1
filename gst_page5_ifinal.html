@@ -420,6 +420,8 @@
     var st_sum=0,dis_sum=0,tax_sum=0,cgst_sum=0,cess_sum=0,total_sum=0;
     for(var i=0;i<h;i+=1)
     {
+        cess[i]=parseFloat(cess[i]).toFixed(2);
+        cess[i]=cess[i]+"%";
         var st=amount(raat[i],qunt[i]);
         st_sum=st_sum+st;
         //st = st.toFixed(2);
