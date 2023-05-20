@@ -515,7 +515,7 @@
                     <td style="text-align: center;width:8%;">${taxable.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
                     <td style="text-align: center;width:5%;">${parseInt(gst[i])}% <br> <span style="font-weight: 100;">${gt[i]}</span></td>
                     <td style="text-align: center;width:5%;">${parseFloat(gsta).toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})} <br><span style="font-weight: 100;">${parseInt(gst[i])}%</span></td>
-                    <td style="text-align: center;width:5%;">${cesa.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})}<br><span style="font-weight: 100;">${cess[i]}%</span></td>
+                    <td style="text-align: center;width:5%;">${cesa.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})}<br><span style="font-weight: 100;">${cess[i]}</span></td>
                     <td style="text-align: center;width:10%;">${total.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
                 </tr> `;
                 tble.innerHTML+=temp;
@@ -629,7 +629,7 @@ else
                     <td style="text-align: center;width:8%;">${taxable.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
                     <td style="text-align: center;width:5%;">${parseInt(gst[i])}% <br> <span style="font-weight: 100;">${gt[i]}</span></td>
                     <td style="text-align: center;width:5%;">${parseFloat(gsta).toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})} <br><span style="font-weight: 100;">${parseInt(gst[i])}%</span></td>
-                    <td style="text-align: center;width:5%;">${cesa.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})}<br><span style="font-weight: 100;">${cess[i]}%</span></td>
+                    <td style="text-align: center;width:5%;">${cesa.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})}<br><span style="font-weight: 100;">${cess[i]}</span></td>
                     <td style="text-align: center;width:10%;">${total.toLocaleString('en-IN', {style: 'currency', currency: 'INR', currencyDisplay: 'symbol', minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
                 </tr> `;
                 tble.innerHTML+=temp;
