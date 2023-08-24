@@ -568,17 +568,17 @@
         rate = parseFloat(rate).toFixed(2);
         }
         var template = `<tr style="width:100%;">
-                                    <td style="width:10%;text-align: left;" id="it${i}">${item}</td>
-                                    <td style="width:15%;" id="id${i}">${dis}</td>
-                                    <td style="width:10%;text-align: center;" id="ih${i}">${hsn}</td>
+                                    <td style="width:10%;text-align: left;" id="it${i}" onclick="clickable(this)">${item}</td>
+                                    <td style="width:15%;" id="id${i}" onclick="clickable(this)">${dis}</td>
+                                    <td style="width:10%;text-align: center;" id="ih${i}" onclick="clickable(this)">${hsn}</td>
                                     
-                                    <td style="width:10%;text-align: center;" id="ir${i}">₹${rate}</td>
-                                    <td style="width:10%;text-align: center;" id="iq${i}">${quant}</td>
-                                    <td style="width:10%;text-align: center;" id="idi${i}">${t}</td>
+                                    <td style="width:10%;text-align: center;" id="ir${i}" onclick="clickable(this)">₹${rate}</td>
+                                    <td style="width:10%;text-align: center;" id="iq${i}" onclick="clickable(this)">${quant}</td>
+                                    <td style="width:10%;text-align: center;" id="idi${i}" onclick="clickable(this)">${t}</td>
                                     
-                                    <td style="width:10%;text-align: center;" id="igst${i}">${gst}</td>
-                                    <td style="width:5%;text-align: center;" id="igt${i}">${gt}</td>
-                                    <td style="width:10%;text-align: center;" id="ic${i}">${cess}</td>
+                                    <td style="width:10%;text-align: center;" id="igst${i}" onclick="clickable(this)">${gst}</td>
+                                    <td style="width:5%;text-align: center;" id="igt${i}" onclick="clickable(this)">${gt}</td>
+                                    <td style="width:10%;text-align: center;" id="ic${i}" onclick="clickable(this)">${cess}</td>
                                     <td id="rem${i}" style="width:10%;" class="rem"><button onclick="deletet()" class="next">Delete</button></td>
                                 </tr>`;
 
