@@ -287,6 +287,10 @@
 
 <script>
 
+    function clickable(a) {
+        a.setAttribute("contenteditable", "true");
+    }
+
     var i = 1;var flag=0; var discount = 0;var k,sf,gt,ef=0;
 
     function fn()
@@ -408,13 +412,13 @@
         }
         if(t!="-"){
         var template = `<tr style="width:100%;">
-                                    <td style="width:15%;text-align: left;" id="it${i}">${item}</td>
-                                    <td style="width:30%;" id="id${i}">${dis}</td>
-                                    <td style="width:10%;text-align: center;" id="ih${i}">${hsn}</td>
+                                    <td style="width:15%;text-align: left;" id="it${i}" onclick="clickable(a)">${item}</td>
+                                    <td style="width:30%;" id="id${i}" onclick="clickable(a)">${dis}</td>
+                                    <td style="width:10%;text-align: center;" id="ih${i}" onclick="clickable(a)">${hsn}</td>
                                     
-                                    <td style="width:10%;text-align: center;" id="ir${i}">₹${rate}</td>
-                                    <td style="width:10%;text-align: center;" id="iq${i}">${quant}</td>
-                                    <td style="width:15%;text-align: center;" id="idi${i}">${t}</td>
+                                    <td style="width:10%;text-align: center;" id="ir${i}" onclick="clickable(a)">₹${rate}</td>
+                                    <td style="width:10%;text-align: center;" id="iq${i}" onclick="clickable(a)">${quant}</td>
+                                    <td style="width:15%;text-align: center;" id="idi${i}" onclick="clickable(a)">${t}</td>
                                     <td id="rem${i}" style="width:10%;" class="rem"><button onclick="deletet()" class="next">Delete</button></td>
                                 </tr>`;
         if(item!=""&&rate!=""&&quant!=""&&quant>0&&hsn!=""&&diss!=""&&invdate!=""&&duedate!="")
