@@ -395,7 +395,7 @@
     {
         if(d=="-")
         {
-            return -1;
+            return true;
         }
         var y,sb;
         y = d.substring(d.length-1, d.length);
@@ -430,7 +430,7 @@
         //st = st.toFixed(2);
         // console.log(st);
         var dis = discountd(diss[i],st);
-        if(dis==-1){
+        if(dis==true){
                 // console.log(dis);
         //console.log(gt[0]);
         if(gt[i]=="Excl.")
