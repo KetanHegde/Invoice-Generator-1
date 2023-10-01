@@ -418,7 +418,7 @@
                                     
                                     <td style="width:10%;text-align: center;" id="ir${i}" onclick="clickable(this)">₹${rate}</td>
                                     <td style="width:10%;text-align: center;" id="iq${i}" onclick="clickable(this)">${quant}</td>
-                                    <td style="width:15%;text-align: center;" id="idi${i}" >${t}</td>
+                                    <td style="width:15%;text-align: center;" id="idi${i}" onclick="clickable(this)">${t}</td>
                                     <td id="rem${i}" style="width:10%;" class="rem"><button onclick="deletet()" class="next">Delete</button></td>
                                 </tr>`;
         if(item!=""&&rate!=""&&quant!=""&&quant>0&&hsn!=""&&diss!=""&&invdate!=""&&duedate!="")
@@ -457,7 +457,7 @@
                                     
                                     <td style="width:10%;text-align: center;" id="ir${i}" onclick="clickable(this)">₹${rate}</td>
                                     <td style="width:10%;text-align: center;" id="iq${i}" onclick="clickable(this)">${quant}</td>
-                                    <td style="width:15%;text-align: center;" id="idi${i}">${t}</td>
+                                    <td style="width:15%;text-align: center;" id="idi${i}" onclick="clickable(this)">${t}</td>
                                     <td id="rem${i}" style="width:10%;" class="rem"><button onclick="deletet()" class="next">Delete</button></td>
                                 </tr>`;
         if(item!=""&&rate!=""&&quant!=""&&quant>0&&hsn!=""&&invdate!=""&&duedate!="")
